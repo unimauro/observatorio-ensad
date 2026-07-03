@@ -129,10 +129,11 @@ function renderPresu() {
       ]
     }, options: opts({ plugins: { legend: { labels: { boxWidth: 12 } }, tooltip: { callbacks: { label: c => c.dataset.label + ': S/ ' + c.raw.toFixed(1) + ' M' } } } })
   });
+  const closed = s.filter(x => !x.parcial); // excluir año en curso (ejecución parcial)
   new Chart(cEjec, {
     type: 'line',
-    data: { labels: s.map(x => x.year), datasets: [{ label: '% ejecución', data: s.map(x => x.ejec_pct), borderColor: GRANATE, backgroundColor: 'rgba(158,16,32,.12)', fill: true, tension: .3 }] },
-    options: opts({ scales: { x: { grid: { color: grid() } }, y: { grid: { color: grid() }, min: 60, max: 100 } } })
+    data: { labels: closed.map(x => x.year), datasets: [{ label: '% ejecución (años cerrados)', data: closed.map(x => x.ejec_pct), borderColor: GRANATE, backgroundColor: 'rgba(125,43,166,.12)', fill: true, tension: .3, spanGaps: true }] },
+    options: opts({ scales: { x: { grid: { color: grid() } }, y: { grid: { color: grid() }, min: 50, max: 100 } } })
   });
   document.getElementById('presupNote').textContent =
     `${DATA.presu._meta.nota || ''} Fuente: ${DATA.presu._meta.fuente}. ${DATA.presu._meta.pliego}.`;
