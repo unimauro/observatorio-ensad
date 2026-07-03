@@ -280,23 +280,23 @@ function renderPlan() {
     w.innerHTML = `<div class="soon"><h3>🔎 En construcción</h3><p style="margin:0;color:var(--muted)">Cruzando la planilla de la ENSAD (docentes, funcionarios y personal, con sus remuneraciones) desde datos públicos del Estado (AIRHSP / portal de transparencia). Este portal <strong>solo muestra personal — nunca nombres de estudiantes</strong>.</p></div>`;
     return;
   }
-  const reg = P.resumen?.por_regimen_airhsp || [];
-  // KPIs planilla
-  const total = P._meta?.total_planilla_airhsp || reg.reduce((s, x) => s + x.n, 0);
-  const doc = reg.find(x => /docente/i.test(x.nombre));
+  const cat = P.resumen?.por_categoria || [];
+  const remun = P.resumen?.remun || {};
+  const total = P._meta?.total || P.personas.length;
+  const nf = cat.find(x => /funcionario/i.test(x.nombre));
+  const na = cat.find(x => /administr/i.test(x.nombre));
+  const maxP = P.personas.reduce((m, x) => (x.remun || 0) > (m.remun || 0) ? x : m, P.personas[0]);
   const kp = document.getElementById('planKpis');
   if (kp) kp.innerHTML = [
-    ['Plazas totales', fmtN(total), 'planilla AIRHSP'],
-    ['Docentes', doc ? fmtN(doc.n) : '—', doc ? 'prom S/ ' + fmtN(doc.sueldo_promedio) : ''],
-    ['Nominal con nombre', fmtN(P.personas.length), 'régimen CAS (PTE)'],
-    ['Remun. máx (CAS)', 'S/ ' + fmtN(Math.round(P.resumen?.remun?.max || 0)), P.personas[0]?.cargo || ''],
+    ['Personal', fmtN(total), 'régimen CAS (PTE)'],
+    ['Funcionarios', nf ? fmtN(nf.n) : '—', 'directores/jefes'],
+    ['Administrativos', na ? fmtN(na.n) : '—', 'analistas/asistentes'],
+    ['Remun. máx', 'S/ ' + fmtN(Math.round(remun.max || 0)), (maxP?.cargo || '').slice(0, 24)],
+    ['Remun. promedio', 'S/ ' + fmtN(Math.round(remun.prom || 0)), 'mediana S/ ' + fmtN(Math.round(remun.mediana || 0))],
   ].map(x => `<div class="kpi"><div class="v">${x[1]}</div><div class="l">${x[0]}</div><div class="s">${x[2] || ''}</div></div>`).join('');
-  // charts régimen
-  if (reg.length) {
-    const short = s => s.replace(/\s*\(.*?\)/, '').replace('D. Leg. Nº', 'DL').replace('D. Leg.', 'DL').replace('Ley Nº', 'Ley');
-    new Chart(cReg, { type: 'bar', data: { labels: reg.map(x => short(x.nombre)), datasets: [{ label: 'Plazas', data: reg.map(x => x.n), backgroundColor: GRANATE }] }, options: opts({ indexAxis: 'y', plugins: { legend: { display: false } } }) });
-    new Chart(cRegS, { type: 'bar', data: { labels: reg.map(x => short(x.nombre)), datasets: [{ label: 'S/ promedio', data: reg.map(x => x.sueldo_promedio), backgroundColor: ORO }] }, options: opts({ indexAxis: 'y', plugins: { legend: { display: false } } }) });
-  }
+  // charts
+  if (cat.length) new Chart(cReg, { type: 'bar', data: { labels: cat.map(x => x.nombre), datasets: [{ label: 'Personas', data: cat.map(x => x.n), backgroundColor: GRANATE }] }, options: opts({ indexAxis: 'y', plugins: { legend: { display: false } } }) });
+  if (remun.min) new Chart(cRegS, { type: 'bar', data: { labels: ['Mínimo', 'Mediana', 'Promedio', 'Máximo'], datasets: [{ label: 'S/', data: [remun.min, remun.mediana, remun.prom, remun.max], backgroundColor: ORO }] }, options: opts({ plugins: { legend: { display: false } } }) });
   // periodo
   const MES = ['', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'setiembre', 'octubre', 'noviembre', 'diciembre'];
   const periodo = P._meta?.mes ? `${MES[P._meta.mes]} ${P._meta.anio}` : (P._meta?.anio || '');
@@ -306,7 +306,7 @@ function renderPlan() {
     <input id="planSearch" placeholder="🔎 Buscar por nombre, cargo o dependencia…" style="width:100%;padding:10px 12px;margin:8px 0 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--tinta);font-size:14px">
     <div class="scroll"><table><thead><tr><th>Nombre</th><th>Cargo</th><th>Dependencia</th><th class="n">Remun. (S/)</th></tr></thead><tbody id="planBody"></tbody></table></div>
     <p class="note" id="planCount"></p>
-    <p class="note">Fuente: ${P._meta?.fuente || 'PTE / AIRHSP'}${periodo ? ' · periodo <strong>' + periodo + '</strong>' : ''}. La lista nominal (nombre+sueldo) del Portal de Transparencia corresponde al régimen CAS; los docentes y el personal DL-276 figuran en el agregado AIRHSP (arriba), sin sueldo individual público. Solo personal — nunca estudiantes.</p>
+    <p class="note">Fuente: ${P._meta?.fuente || 'Portal de Transparencia'}${periodo ? ' · periodo <strong>' + periodo + '</strong>' : ''}. Lista nominal (nombre+sueldo) que publica el Portal de Transparencia — todo el personal de ENSAD está bajo régimen CAS. El agregado AIRHSP no permite separar a ENSAD del resto del MINEDU. Solo personal — nunca estudiantes.</p>
   </div>`;
   const body = document.getElementById('planBody'), cnt = document.getElementById('planCount'), inp = document.getElementById('planSearch');
   const draw = (q = '') => {

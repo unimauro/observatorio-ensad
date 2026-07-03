@@ -1,0 +1,196 @@
+{
+ "_meta": {
+  "fuente": "peru-transparente (Portal de Transparencia Estandar / AIRHSP)",
+  "entidad": "Escuela Nacional Superior de Arte Dramatico (ENSAD) - UE 123 pliego 010 MINEDU",
+  "anio": 2026,
+  "mes": 4,
+  "nota": "Solo personal, no estudiantes. La lista NOMINAL con nombre y remuneracion real que publica el PTE para la ENSAD (id_entidad 18630) cubre UNICAMENTE el regimen CAS: 20 personas del periodo 2026-04. Todas son de gestion y administracion (directores, jefes de oficina/carrera, coordinadores, analistas, asistentes, especialistas); en la planilla nominal del PTE no aparece personal docente/artistico con titulo de 'docente' ni su remuneracion individual (habria que obtenerlo del portal de transparencia de la ENSAD o del AIRHSP nominal). El agregado AIRHSP local solo llega a nivel de pliego (010 MINEDU) y NO permite separar a la ENSAD del resto del MINEDU. No se inventaron personas ni sueldos.",
+  "total": 20
+ },
+ "resumen": {
+  "por_regimen_nominal": [
+   {
+    "nombre": "CAS (D.Leg. 1057)",
+    "n": 20
+   }
+  ],
+  "por_categoria": [
+   {
+    "nombre": "administrativo",
+    "n": 7
+   },
+   {
+    "nombre": "funcionario",
+    "n": 13
+   }
+  ],
+  "remun": {
+   "prom": 5558.61,
+   "mediana": 5362.14,
+   "min": 3309.76,
+   "max": 8864.19
+  }
+ },
+ "personas": [
+  {
+   "nombre": "CABANILLAS ALVITREZ, EDITH NOEMI",
+   "cargo": "ANALISTA EN CONTROL PREVIO Y FISCALIZACIÓN",
+   "dependencia": "AREA DE CONTABILIDAD Y CONTROL PREVIO",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "administrativo",
+   "remun": 3831.72
+  },
+  {
+   "nombre": "HUACACHI SOTOMAYOR, ROCIO DEL PILAR",
+   "cargo": "ASISTENTE ADMINISTRATIVO",
+   "dependencia": "AREA DE TESORERÍA",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "administrativo",
+   "remun": 3309.76
+  },
+  {
+   "nombre": "HUAMAN CRUZ, JEANET ELVIRA",
+   "cargo": "ANALISTA EN TERMINOS DE REFERENCIA Y ESPECIFICACIONES TÉCNICAS",
+   "dependencia": "OFICINA DE ADMINISTRACIÓN",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "administrativo",
+   "remun": 4760.27
+  },
+  {
+   "nombre": "HUARANGA PALACIOS, ABEL TEODORO",
+   "cargo": "ESPECIALISTA EN TESORERÍA",
+   "dependencia": "OFICINA DE ADMINISTRACION",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "administrativo",
+   "remun": 5364.19
+  },
+  {
+   "nombre": "MONTOYA BUJAICO, JAHNO WILMER",
+   "cargo": "ASISTENTE DE ALMACEN",
+   "dependencia": "OFICINA DE ADMINISTRACION",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "administrativo",
+   "remun": 3364.19
+  },
+  {
+   "nombre": "MORALES DE LA CRUZ, JOSE HERNANDO",
+   "cargo": "ANALISTA EN CONTROL PATRIMONIAL",
+   "dependencia": "OFICINA DE ADMINISTRACION",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "administrativo",
+   "remun": 3857.21
+  },
+  {
+   "nombre": "VIZCARRA RIVERA, DAVID MÁXIMO",
+   "cargo": "ANALISTA DE SISTEMAS Y REDES",
+   "dependencia": "AREA DE INFORMÁTICA",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "administrativo",
+   "remun": 3797.64
+  },
+  {
+   "nombre": "AGURTO SILVA, MIGUEL ANGEL",
+   "cargo": "JEFE DE CARRERA DE EDUCACIÓN ARTÍSTICA",
+   "dependencia": "DIRECCIÓN ACADÉMICA",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "funcionario",
+   "remun": 5350.41
+  },
+  {
+   "nombre": "AVILES FLORES ORTIZ, JOSE",
+   "cargo": "DIRECTOR DE PRODUCCIÓN ARTÍSTICA",
+   "dependencia": "DIRECIÓN DE PRODUCCIÓN DE PRODUCCIÓN ARTÍSTICA",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "funcionario",
+   "remun": 7164.19
+  },
+  {
+   "nombre": "CADILLO JARA, SANTOS GUIDO",
+   "cargo": "SECRETARIO GENERAL",
+   "dependencia": "SECRETARIA GENERAL",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "funcionario",
+   "remun": 8864.19
+  },
+  {
+   "nombre": "CAPUÑAY CUSTODIO, OLIVER WILSON",
+   "cargo": "COORDINADOR DEL AREA DE CONTABILIDAD Y CONTROL PREVIO",
+   "dependencia": "OFICINA DE ADMINISTRACION",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "funcionario",
+   "remun": 6363.75
+  },
+  {
+   "nombre": "CHAVEZ QUILIANO, FRESSIA ROSMERY",
+   "cargo": "JEFA DE LA OFICINA DE ADMINISTRACION",
+   "dependencia": "OFICINA DE ADMINISTRACIÓN",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "funcionario",
+   "remun": 6364.19
+  },
+  {
+   "nombre": "CHINCHAY VASQUEZ, JANET SOLEDAD",
+   "cargo": "JEFA DE LA OFICINA DE PLANIFICACIÓN Y PRESUPUESTO",
+   "dependencia": "DIRECCIÓN GENERAL",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "funcionario",
+   "remun": 8364.19
+  },
+  {
+   "nombre": "FARIAS MORENO, STEFANY YESENIA",
+   "cargo": "JEFA DE CARRERA DE FORMACIÓN ARTÍSTICA, DISEÑO",
+   "dependencia": "DIRECCIÓN ACADÉMICA",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "funcionario",
+   "remun": 5347.43
+  },
+  {
+   "nombre": "FATAMA GARCIA, BILLY ABEL",
+   "cargo": "COORDINADOR DEL AREA DE GESTION DE PERSONAL",
+   "dependencia": "OFICINA DE ADMINISTRACION",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "funcionario",
+   "remun": 6324.86
+  },
+  {
+   "nombre": "LOAYZA JUAREZ, YASMIN MILAGROS",
+   "cargo": "DIRECTORA ACADÉMICA",
+   "dependencia": "DIRECCIÓN ACADÉMICA",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "funcionario",
+   "remun": 7164.19
+  },
+  {
+   "nombre": "LORA CUENTAS, ISADORA LUCIA",
+   "cargo": "DIRECTORA DE INVESTIGACIÓN",
+   "dependencia": "DIRECCIÓN DE INVESTIGACIÓN",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "funcionario",
+   "remun": 7164.19
+  },
+  {
+   "nombre": "RODRIGUEZ PEREZ, IDA NELLY",
+   "cargo": "COORDINADORA DEL AREA DE LOGISTICA",
+   "dependencia": "OFICINA DE ADMINISTRACIÓN",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "funcionario",
+   "remun": 5360.09
+  },
+  {
+   "nombre": "SALAS CHANVILLA, VIRGILIO CESAR",
+   "cargo": "JEFE DE CARRERA DE FORMACIÓN ARTÍSTICA, ACTUACIÓN",
+   "dependencia": "DIRECCIÓN ACADÉMICA",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "funcionario",
+   "remun": 5364.19
+  },
+  {
+   "nombre": "YANCE REJAS, DAVID JESUS",
+   "cargo": "COORDINADOR DEL AREA DE PRODUCCION ARTISTICA",
+   "dependencia": "DIRECCION DE PRODUCCION ARTISTICA",
+   "regimen": "CAS (D.Leg. 1057)",
+   "categoria": "funcionario",
+   "remun": 3691.37
+  }
+ ]
+}

@@ -1,0 +1,64 @@
+{
+ "_meta": {
+  "fuente": "OECE/OSCE - CONOSCE Datos Abiertos, reporte de Adjudicaciones (buena pro por item)",
+  "fuente_url": "https://conosce.osce.gob.pe/buscador/assets/67ae6c4a/reportes/adjudicaciones/",
+  "entidad": "Escuela Nacional Superior de Arte Dramatico \"Guillermo Ugarte Chamorro\" (ENSAD) - UE 123 pliego 010 MINEDU",
+  "ruc": "20600739159",
+  "codigoentidad_conosce": 202366,
+  "periodo": "2023-2025",
+  "extraido": "2026-07",
+  "unidad_monto": "Soles (PEN), monto adjudicado por item",
+  "nota": "Agregado desde reportes anuales CONOSCE de Adjudicaciones (nivel item de buena pro), archivos CONOSCE_ADJUDICACIONES{2023,2024,2025}_0.xlsx. ENSAD es una entidad muy pequena: en 2023-2025 solo registra 2 adjudicaciones (1 en 2023, 1 en 2024, 0 en 2025), ambas Contrataciones Directas de alquiler de inmueble (Teatro Roma y sede via Alianza Francesa). \"monto\"=suma de monto_adjudicado_item_soles. \"n\"=numero de codigoconvocatoria distintos. tipo_persona por prefijo de RUC (20=empresa/asociacion, 10/15=natural). NO incluye ordenes de compra <8 UIT (dataset aparte). En 2025 el reporte CONOSCE no lista adjudicaciones para el codigoentidad 202366."
+ },
+ "totales": {
+  "monto_total": 1786576.96,
+  "n_proveedores": 2,
+  "n_procesos": 2,
+  "n_empresas": 1,
+  "n_personas_naturales": 1,
+  "monto_empresas": 946576.96,
+  "monto_personas_naturales": 840000.0
+ },
+ "top_personas": [
+  {
+   "nombre": "ZANATTI BERNINZON CARLOS ALBERTO",
+   "ruc": "10078295525",
+   "monto": 840000.0,
+   "n": 1
+  }
+ ],
+ "proveedores": [
+  {
+   "nombre": "ALIANZA FRANCESA DE LIMA",
+   "ruc": "20110401796",
+   "monto": 946576.96,
+   "n": 1,
+   "tipos": {
+    "Contratación Directa": 1
+   },
+   "objeto": {
+    "Servicio": 1
+   },
+   "tipo_persona": "empresa",
+   "tipo_proveedor_seace": "Persona Juridica",
+   "dueno": "Fabiola Maria Leon Velarde Servetto (Presidente, desde 2023-12-02); Asociacion cultural sin fines de lucro",
+   "fuente_dueno": "https://www.datosperu.org/empresa-alianza-francesa-de-lima-20110401796.php"
+  },
+  {
+   "nombre": "ZANATTI BERNINZON CARLOS ALBERTO",
+   "ruc": "10078295525",
+   "monto": 840000.0,
+   "n": 1,
+   "tipos": {
+    "Contratación Directa": 1
+   },
+   "objeto": {
+    "Servicio": 1
+   },
+   "tipo_persona": "natural",
+   "tipo_proveedor_seace": "Persona Natural",
+   "dueno": "Persona natural (proveedor directo); arrendo el inmueble Teatro Roma a la ENSAD",
+   "fuente_dueno": "https://infodelperu.com/zanatti-berninzon-carlos-alberto-10078295525/"
+  }
+ ]
+}
