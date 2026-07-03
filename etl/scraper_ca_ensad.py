@@ -78,8 +78,8 @@ def num(s):
 
 
 def parse_target_row(soup, code):
-    """Encuentra la fila cuyo label empieza 'code:' y devuelve (label, nums)."""
-    pat = re.compile(r"^0*%s\s*:" % re.escape(code))
+    """Encuentra la fila cuyo label empieza 'code' (con sufijo -NNNN opcional) y devuelve (label, nums)."""
+    pat = re.compile(r"^0*%s(-\d+)?\s*:" % re.escape(code))
     for tr in soup.find_all("tr"):
         cells = [td.get_text(" ", strip=True) for td in tr.find_all("td")]
         idx = next((i for i, c in enumerate(cells) if pat.match(c)), None)
@@ -144,9 +144,9 @@ def scrape_year(s, year):
         raise RuntimeError("no encontré pliego 010 M. DE EDUCACION")
 
     # 4) Unidad Ejecutora (elige pliego 010) -> buscar fila UE 123
-    bn, bv = find_button(soup, "Unidad Ejecutora")
+    bn, bv = find_button(soup, "Ejecutora")
     if not bn:
-        raise RuntimeError("no encontré botón Unidad Ejecutora")
+        raise RuntimeError("no encontré botón Ejecutora")
     soup = post(s, soup, bn, bv, pli, year)
     label, nums = parse_target_row(soup, "123")
     if not nums:
