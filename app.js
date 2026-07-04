@@ -88,16 +88,18 @@ function renderValor() {
   });
   // KPIs — base I+D (justa) y base presupuesto total (contexto)
   const ly = years[years.length - 1];
-  const idi = DATA.biblio?.presupuesto?.idi; // S/ millones de I+D
+  const _prog = DATA.presu?.detalle_ultimo_anio?.por_programa || [];
+  const _idiM = _prog.filter(p => /investigaci|innovaci|ciencia.*tecnolog|\bi\+d\b|\bcti\b/i.test(p.nombre || '')).reduce((a, p) => a + (p.dev || p.pim || 0), 0);
+  const idi = _idiM > 0 ? _idiM / 1e6 : (DATA.biblio?.presupuesto?.idi); // S/ millones de I+D (partida real)
   const wLy = worksByY[ly], devLy = devByY[ly];
   const k = [];
-  if (idi) k.push(['Costo por publicación (I+D)', 'S/ ' + fmtN(Math.round(idi * 1e6 / wLy)), 'base partida I+D ' + (DATA.biblio.presupuesto.anio || ly)]);
+  if (idi) k.push(['Costo por publicación (I+D)', 'S/ ' + fmtN(Math.round(idi * 1e6 / wLy)), 'base partida I+D ' + (DATA.presu?.detalle_ultimo_anio?.anio || ly)]);
   k.push(['Publicaciones por S/10M', (wLy / (devLy / 1e7)).toFixed(1), 'ejecutado ' + ly]);
-  k.push(['Costo por pub (ppto total)', 'S/ ' + fmtM(devLy / wLy).replace('S/ ', ''), 'incluye planilla/pensiones']);
+  k.push(['Costo por pub (ppto total)', 'S/ ' + fmtN(Math.round(devLy / wLy)), 'incluye planilla/pensiones']);
   if (DATA.adm?._meta) k.push(['Presupuesto por ingresante', 'S/ ' + fmtN(Math.round(devLy / DATA.adm._meta.total_ingresantes)), 'referencial (' + ly + ')']);
   document.getElementById('valorKpis').innerHTML = k.map(x => `<div class="kpi"><div class="v">${x[1]}</div><div class="l">${x[0]}</div><div class="s">${x[2] || ''}</div></div>`).join('');
   document.getElementById('valorNote').innerHTML =
-    `La métrica <strong>justa</strong> de eficiencia investigadora es el <strong>costo por publicación con la partida de I+D</strong> (${idi ? 'S/ ' + idi + 'M en ' + (DATA.biblio.presupuesto.anio || ly) : 's/d'}), no el presupuesto total —que paga docencia, planilla, pensiones y servicios, no solo investigar—. El "costo por pub (ppto total)" se muestra solo como contexto y NO debe leerse como gasto en investigación. Fuentes: MEF/SIAF + OpenAlex.`;
+    `La métrica <strong>justa</strong> de eficiencia investigadora es el <strong>costo por publicación con la partida de I+D</strong> (${idi ? 'S/ ' + idi + 'M en ' + (DATA.presu?.detalle_ultimo_anio?.anio || ly) : 's/d'}), no el presupuesto total —que paga docencia, planilla, pensiones y servicios, no solo investigar—. El "costo por pub (ppto total)" se muestra solo como contexto y NO debe leerse como gasto en investigación. Fuentes: MEF/SIAF + OpenAlex.`;
 }
 
 // ---- KPIs ----
@@ -106,12 +108,9 @@ function renderKpis() {
   const k = [];
   const s = DATA.presu?.serie;
   if (s && s.length) {
-    const last = s[s.length - 1];
+    const last = [...s].reverse().find(x => !x.parcial) || s[s.length - 1];
     k.push(['PIM ' + last.year, fmtM(last.pim), 'Presupuesto modificado']);
     k.push(['Devengado ' + last.year, fmtM(last.dev), last.ejec_pct + '% de ejecución']);
-  } else {
-    k.push(['PIM 2025', 'S/ 370.6 M', 'Pliego 514 (MEF)']);
-    k.push(['Devengado 2025', 'S/ 338.3 M', '91.3% de ejecución']);
   }
   if (DATA.prov?.totales) k.push(['Adjudicado a proveedores', fmtM(DATA.prov.totales.monto_total), fmtN(DATA.prov.totales.n_proveedores) + ' proveedores (' + (DATA.prov._meta?.periodo || '') + ')']);
   if (DATA.plan?.personas?.length) k.push(['Personal', fmtN(DATA.plan._meta?.total || DATA.plan.personas.length), 'docentes/funcionarios/admin.']);
